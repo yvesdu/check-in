@@ -1,0 +1,52 @@
+<% if @team.present? && !@team.id.nil? %>
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="/" class="brand-link">
+      <span class="brand-text font-weight-light">Standup App</span>
+    </a>
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 652px;"><div class="sidebar" style="min-height: 652px; overflow: hidden; width: auto; height: 652px;">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <h3 class="header-circ">
+            <%= @team&.name[0]&.upcase %>
+          </h3>
+        </div>
+        <div class="info" style="vertical-align: middle; margin-top: 5px;">
+          <a href="#"><%= @team.name %></a>
+        </div>
+      </div>
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-header">Overview</li>
+          <li class="nav-item">
+            <%= link_to team_path(@team), {class: 'nav-link', id: "edit_#{@team.id}_sidebar"} do %>
+              <i class="fas fa-tachometer-alt"></i>
+              <p> Details</p>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to edit_team_path(@team), {class: 'nav-link', id: "edit_#{@team.id}_sidebar"} do %>
+              <i class="fas fa-cog"></i>
+              <p> Settings</p>
+            <% end %>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link">
+              <p>
+                Standups
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href=<%="/t/#{@team.id}/s"%> class="nav-link">
+                  <i class="fas fa-child"></i>
+                  <p>View</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+<% end %>
