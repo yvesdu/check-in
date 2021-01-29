@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
 
   helper_method :current_account
+  helper_method :current_date # new addition
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, error: exception.message

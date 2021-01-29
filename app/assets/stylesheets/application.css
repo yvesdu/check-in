@@ -19,3 +19,8 @@
 
  @import 'bootstrap';
  @import 'admin-lte/dist/css/adminlte';
+ @import 'bootstrap-datepicker/dist/css/bootstrap-datepicker';
+
+ .cursor {
+    cursor: pointer;
+  }
