@@ -22,6 +22,11 @@ require("../lib/flash.js");
 
 require('bootstrap-datepicker')
 
+import { cocoonInitializer } from "cocoon/app/assets/javascripts/cocoon";
+
+// to initialize cocoon ...
+cocoonInitializer($, jQuery);
+
 require('../lib/dateUpdater')
 
 
