@@ -10,6 +10,6 @@
 
 <section class="content">
   <div class="container-fluid">
-    <%= render partial: 'layouts/date_change' %>
+    <%= react_component("StandupsWrapper", { standups: Api::StandupsSerializer.new(@standups).as_json }) %>
   </div>
 </section>

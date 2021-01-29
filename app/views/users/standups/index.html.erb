@@ -1,0 +1,45 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark"> User > Standups </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Information</h3>
+          </div>
+          <div class="card-body">
+            <p>
+              <strong> Email</strong>
+              <%= ": #{@user.email}" %>
+            </p>
+            <p>
+              <strong> Timezone</strong>
+              <%= ": #{@user.time_zone || 'not set'}" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title"><%= "#{@user.name}'s Standups" %></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="user-standups-container">
+      <%= react_component("StandupsWrapper", { standups: Api::StandupsSerializer.new(@standups).as_json }) %>
+    </div>
+  </div>
+</section>

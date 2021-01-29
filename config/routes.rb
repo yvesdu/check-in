@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   patch 'user/update_password', to: 'users#update_password', as: 'my_update_password'
 
   scope 'account', as: 'account' do
-    resources :users
+    resources :users do
+      member do
+        get 's', to: 'users/standups#index', as: 'standups'
+      end
+    end
   end
   
   get 'activity/mine'
