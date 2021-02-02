@@ -33,6 +33,7 @@ gem 'cancancan'
 gem 'immutable-struct'
 
 gem 'sidekiq'
+gem 'sidekiq-cron'
 gem 'sinatra', require: nil
 
 gem 'gravatar_image_tag'
@@ -40,6 +41,8 @@ gem 'gravatar_image_tag'
 gem 'money-rails'
 
 gem 'slack-notifier'
+
+gem 'bootstrap-email'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'cocoon'

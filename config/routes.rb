@@ -25,6 +25,10 @@ Rails.application.routes.draw do
 
   get 'dates/:date', to: 'dates#update', as: 'update_date'
 
+  require 'sidekiq/web'
+  require 'sidekiq/cron/web'
+  mount Sidekiq::Web, at: '/sidekiq'
+
   root to: 'activity#mine'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
