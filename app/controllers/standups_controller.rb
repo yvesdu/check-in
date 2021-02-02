@@ -95,4 +95,11 @@ class StandupsController < ApplicationController
       redirect_to(new_standup_path(date: current_date)) and return true
     end
   end
+
+  def invoke_cables
+    CableServices::NotifyJobsService.new(
+      standup: @standup,
+      user: current_user
+    ).notify(action_name.to_sym)
+  end
 end
