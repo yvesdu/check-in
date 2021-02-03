@@ -4,7 +4,14 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+
+var ReactRailsUJS = require("react_ujs");
+require("turbolinks").start();
+// Add Turbolinks to the global namespace:
+window.Turbolinks = Turbolinks;
+// Remove previous event handlers and add new ones:
+ReactRailsUJS.detectEvents();
+
 require("@rails/activestorage").start()
 require("channels")
 
@@ -34,3 +41,7 @@ require('../lib/dateUpdater')
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+// Support component names relative to this directory:
+var componentRequireContext = require.context("components", true);
+var ReactRailsUJS = require("react_ujs");
+ReactRailsUJS.useContext(componentRequireContext);
