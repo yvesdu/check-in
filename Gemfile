@@ -22,6 +22,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 
+gem 'bootstrap', '~> 4.2.1'
+
 gem 'local_time'
 
 gem 'devise'
