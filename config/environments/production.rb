@@ -1,4 +1,7 @@
 Rails.application.configure do
+  # Prepare the ingress controller used to receive mail
+  # config.action_mailbox.ingress = :relay
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -40,8 +43,13 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
-  # config.action_cable.url = 'wss://example.com/cable'
-  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  config.action_cable.url = 'wss://getderivative.com/cable'
+  config.action_cable.allowed_request_origins = [ 'http://getderivative.com', /http:\/\/getderivative.*/ ]
+
+  config.action_mailer.default_url_options = { :host => 'getderivative.com' }
+  routes.default_url_options = { :host => "getderivative.com" }
+
+  config.action_mailer.asset_host = "https://getderivative.com"
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -61,6 +69,19 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "new_app_production"
 
   config.action_mailer.perform_caching = false
+
+  config.action_mailer.raise_delivery_errors = false
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  ActionMailer::Base.smtp_settings = {
+    user_name: '**your username**',
+    password: '**your password**',
+    domain: 'getderivative.com',
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain
+  }
 
   
   # Ignore bad email addresses and do not raise email delivery errors.

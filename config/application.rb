@@ -36,5 +36,8 @@ module NewApp
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    config.action_mailbox.ingress = :sendgrid
+
+    config.middleware.use Rack::Deflater
   end
 end
